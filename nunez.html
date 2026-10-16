@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Formulario Núñez, dos opciones</title>
+<style>
+  :root{
+    --bg:#f4f5f7; --ink:#1c1e21; --muted:#5c6470; --card:#ffffff; --line:#d9dce1; --accent:#0b57d0; --mark:#fff3b0; --markink:#4a3b00;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){ --bg:#15171a; --ink:#e8eaed; --muted:#a0a7b1; --card:#1f2226; --line:#343940; --accent:#8ab4f8; --mark:#5a4a00; --markink:#ffe9a0; }
+  }
+  :root[data-theme="dark"]{ --bg:#15171a; --ink:#e8eaed; --muted:#a0a7b1; --card:#1f2226; --line:#343940; --accent:#8ab4f8; --mark:#5a4a00; --markink:#ffe9a0; }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+  .wrap{max-width:1000px;margin:0 auto;padding:24px 16px 48px}
+  h1{font-size:22px;margin:0 0 6px}
+  .lead{color:var(--muted);margin:0 0 14px;max-width:62ch}
+  .tools{display:flex;gap:16px;align-items:center;flex-wrap:wrap;margin-bottom:22px}
+  .tools label{display:flex;gap:8px;align-items:center;cursor:pointer}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:28px;align-items:start}
+  .col h2{font-size:17px;margin:0 0 2px}
+  .col .sub{color:var(--muted);font-size:13.5px;margin:0 0 12px}
+  mark{background:var(--mark);color:var(--markink);border-radius:3px;padding:0 3px}
+
+  /* teléfono */
+  .phone{width:100%;max-width:370px;height:720px;background:#e9ebee;border:1px solid var(--line);border-radius:22px;overflow:hidden;display:flex;flex-direction:column;color:#1c1e21;margin:0 auto 0 0}
+  .ph-head{background:#fff;height:52px;display:flex;align-items:center;justify-content:center;font-weight:700;border-bottom:1px solid #dadde1;position:relative;flex:none}
+  .ph-x{position:absolute;right:10px;top:9px;width:34px;height:34px;border-radius:50%;border:0;background:#e4e6eb;font-size:18px;cursor:pointer;color:#1c1e21}
+  .ph-body{flex:1;overflow-y:auto;padding:14px 14px 20px}
+  .ph-foot{background:#fff;padding:10px 14px;border-top:1px solid #dadde1;flex:none}
+  .btn{width:100%;padding:12px;border:0;border-radius:8px;font-weight:700;font-size:15px;background:#0866ff;color:#fff;cursor:pointer}
+  .btn[disabled]{background:#e4e6eb;color:#9aa0a8;cursor:not-allowed}
+  .btn.wa{background:#1fa855}
+  .card{background:#fff;border-radius:14px;padding:14px;margin-bottom:12px;box-shadow:0 1px 3px rgba(0,0,0,.12)}
+  .intro{text-align:center;padding-top:22px}
+  .logo{width:56px;height:56px;border-radius:50%;background:#2b2b2b;color:#fff;display:grid;place-items:center;font-weight:800;margin:0 auto 4px}
+  .brand{color:#65676b;font-size:13px;margin-bottom:10px}
+  .intro h3{margin:0 0 8px;font-size:18px}
+  .intro p{margin:0 0 8px;font-size:14px;color:#2c2f33}
+  .intro p:last-of-type{margin-bottom:0}
+  .q label.t{display:block;font-weight:700;font-size:15px;margin-bottom:8px}
+  .q select,.q textarea,.q input{width:100%;padding:10px;border:1px solid #ccd0d5;border-radius:8px;font:inherit;background:#fff;color:#1c1e21}
+  .q textarea{resize:none;height:64px}
+  .q input[readonly]{background:#f2f3f5;color:#4b4f56}
+  .small{font-size:12px;color:#65676b;margin-top:6px}
+  .why{display:none;margin-top:8px;padding:7px 9px;border-left:3px solid #0b57d0;background:#eef3fb;color:#27415f;font-size:12.5px;border-radius:0 6px 6px 0;text-align:left}
+  body.show-why .why{display:block}
+  .rev dt{font-size:12.5px;color:#65676b;margin-top:10px}
+  .rev dd{margin:2px 0 0;font-weight:600}
+  .center{text-align:center}
+  .tick{width:56px;height:56px;border-radius:50%;background:#e3f6ea;color:#1fa855;display:grid;place-items:center;font-size:28px;margin:18px auto 10px}
+  .reset{margin-top:10px;background:none;border:1px solid var(--line);color:var(--ink);padding:6px 12px;border-radius:8px;cursor:pointer;font:inherit;font-size:13px}
+  .foot{margin-top:28px;color:var(--muted);font-size:13px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Formulario Núñez: dos opciones</h1>
+  <p class="lead">Maqueta interactiva de cómo se vería cada formulario. Completalos para recorrer todos los pasos. Los valores <mark>[entre corchetes]</mark> los define el equipo comercial. No es el formulario real de Meta.</p>
+  <div class="tools">
+    <label><input type="checkbox" id="whyToggle"> Mostrar justificación de cada elemento</label>
+  </div>
+  <div class="grid">
+    <section class="col" id="colA"></section>
+    <section class="col" id="colB"></section>
+  </div>
+  <p class="foot">Ambas versiones usan formulario de tipo "Mayor intención" (pantalla de revisión antes de enviar).</p>
+</div>
+
+<script>
+(function(){
+  var esc = function(s){ return String(s).replace(/[&<>"]/g, function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]; }); };
+  var fmt = function(s){ return esc(s).replace(/\[([^\]]+)\]/g, "<mark>[$1]</mark>"); };
+
+  /* Preguntas compartidas */
+  var Q_AMB = {id:"amb",label:"¿Cuántos ambientes estás buscando?",type:"select",
+    options:["Monoambiente","2 ambientes","3 ambientes","4 ambientes o más"],
+    why:"Deriva a la unidad correcta. No agrega fricción."};
+  var Q_OBJ = {id:"obj",label:"¿Cuál es el objetivo de tu compra?",type:"select",
+    options:["Vivienda propia","Inversión","Ambas"],
+    why:"Cambia el guion del asesor y permite medir qué audiencia trae inversores. Al hablar de \"compra\", filtra también a quien busca alquilar."};
+  var Q_PRES = {id:"pres",label:"¿Qué presupuesto estás considerando?",type:"select",
+    options:["Menos de USD [mínimo]","Entre USD [mínimo] y [A]","Entre USD [A] y [B]","Más de USD [B]"],
+    why:"Filtra capacidad de compra. La primera opción deja que quien no califica se identifique solo."};
+  var Q_PLAZO = {id:"plazo",label:"¿Cuándo planeás concretar la compra?",type:"select",
+    options:["En los próximos 3 meses","Entre 3 y 6 meses","Entre 6 y 12 meses","Estoy explorando opciones"],
+    why:"Ordena la prioridad de contacto: quien compra pronto se atiende primero."};
+  var Q_PAGO = {id:"pago",label:"¿Cómo planeás financiar la compra?",type:"select",
+    options:["Con fondos propios","Anticipo y financiación del desarrollador","Aún no lo definí"],
+    why:"Segmenta el guion del asesor según cómo piensa pagar y confirma el interés en la financiación directa. Ya no filtra por sí sola: el filtro lo hacen el precio y el presupuesto."};
+  var Q_ABIERTA = {id:"abierta",label:"¿Qué es lo más importante para vos en tu próximo hogar?",type:"text",
+    placeholder:"Por ejemplo: ubicación, amenities, plazo de entrega",
+    why:"Cuesta completados, pero filtra intención real y le da al asesor un punto de partida para la primera conversación."};
+
+  var FORMS = {
+    A: {
+      key:"A",
+      title:"Opción A: calificación equilibrada",
+      sub:"4 preguntas. Filtra sin castigar demasiado el volumen.",
+      headline:"Residencias en Núñez",
+      intro:[
+        "Diseño de alta calidad y más de 1.500 m² de amenities en una zona exclusiva de Núñez.",
+        "Unidades en venta desde USD [X], con financiación directa del desarrollador: anticipo desde [Y]% y [N] cuotas."
+      ],
+      introWhy:"\"Unidades en venta\", el precio y la financiación filtran antes de abrir el formulario. Es el filtro más barato y evita una pregunta extra sobre alquiler.",
+      questions:[Q_AMB,Q_OBJ,Q_PRES,Q_PLAZO],
+      contactWhy:"Solo nombre y teléfono (WhatsApp). Se eliminan \"cómo te contactamos\" y \"franja horaria\": se resuelven en el primer mensaje.",
+      reviewWhy:"La pantalla de revisión (mayor intención) reduce envíos por error.",
+      sendLabel:"Enviar consulta",
+      verify:false,
+      thanksText:"Un asesor de GCH te escribirá por WhatsApp en breve con la información de las unidades disponibles.",
+      thanksWhy:"Siguiente paso claro y contacto inmediato por WhatsApp."
+    },
+    B: {
+      key:"B",
+      title:"Opción B: filtro alto",
+      sub:"6 preguntas más verificación. Menos volumen, leads más listos para ventas.",
+      headline:"Residencias en Núñez",
+      intro:[
+        "Diseño de alta calidad y más de 1.500 m² de amenities en una zona exclusiva de Núñez.",
+        "Unidades en venta desde USD [X], con entrega estimada en [mes/año]. Financiación directa del desarrollador: anticipo desde [Y]% y saldo en [N] cuotas."
+      ],
+      introWhy:"Más datos concretos antes del envío (entrega y condiciones completas): el asesor pierde menos tiempo con consultas que no encajan.",
+      questions:[Q_AMB,Q_OBJ,Q_PRES,Q_PAGO,Q_PLAZO,Q_ABIERTA],
+      contactWhy:"Solo nombre y teléfono (WhatsApp).",
+      reviewWhy:"Pantalla de revisión (mayor intención).",
+      sendLabel:"Verificar teléfono",
+      verify:true,
+      verifyWhy:"Verificación de teléfono, si tu cuenta la permite: reduce números falsos o con errores de tipeo.",
+      thanksText:"Un asesor de GCH te escribirá por WhatsApp en breve con la información de las unidades disponibles.",
+      thanksWhy:"Siguiente paso claro y contacto inmediato por WhatsApp."
+    }
+  };
+
+  function mount(root, cfg){
+    var state = {step:0, a:{}};
+    root.innerHTML =
+      '<h2>'+esc(cfg.title)+'</h2><p class="sub">'+esc(cfg.sub)+'</p>' +
+      '<div class="phone"><div class="ph-head">GCH<button class="ph-x" aria-label="Reiniciar">&times;</button></div>' +
+      '<div class="ph-body"></div><div class="ph-foot"><button class="btn"></button></div></div>' +
+      '<button class="reset">Reiniciar esta versión</button>';
+    var body = root.querySelector(".ph-body");
+    var btn = root.querySelector(".btn");
+    var whyBox = function(t){ return t ? '<div class="why">'+fmt(t)+'</div>' : ''; };
+
+    function allAnswered(){
+      return cfg.questions.every(function(q){
+        var v = state.a[q.id];
+        return v && String(v).trim().length > 0;
+      });
+    }
+    function setBtn(label, enabled, cls){
+      btn.textContent = label;
+      btn.disabled = !enabled;
+      btn.className = "btn" + (cls ? " "+cls : "");
+    }
+
+    function render(){
+      var html = "";
+      if(state.step === 0){
+        html += '<div class="card intro"><div class="logo">GCH</div><div class="brand">GCH</div>' +
+                '<h3>'+esc(cfg.headline)+'</h3>';
+        cfg.intro.forEach(function(p){ html += '<p>'+fmt(p)+'</p>'; });
+        html += whyBox(cfg.introWhy)+'</div>';
+        cfg.questions.forEach(function(q){
+          html += '<div class="card q"><label class="t" for="'+cfg.key+q.id+'">'+esc(q.label)+'</label>';
+          if(q.type === "select"){
+            html += '<select id="'+cfg.key+q.id+'" data-id="'+q.id+'"><option value="">Seleccionar</option>';
+            q.options.forEach(function(o){
+              var sel = state.a[q.id] === o ? " selected" : "";
+              html += '<option value="'+esc(o)+'"'+sel+'>'+esc(o)+'</option>';
+            });
+            html += '</select>';
+          } else {
+            html += '<textarea id="'+cfg.key+q.id+'" data-id="'+q.id+'" maxlength="140" placeholder="'+esc(q.placeholder||"")+'">'+esc(state.a[q.id]||"")+'</textarea>';
+          }
+          html += whyBox(q.why)+'</div>';
+        });
+        html += '<div class="card q"><label class="t">Tus datos</label>' +
+                '<input readonly value="Nombre Apellido" style="margin-bottom:8px">' +
+                '<input readonly value="+54 9 11 ••••-••••">' +
+                '<div class="small">Datos precargados de tu perfil.</div>'+whyBox(cfg.contactWhy)+'</div>';
+        body.innerHTML = html;
+        setBtn("Continuar", allAnswered());
+      } else if(state.step === 1){
+        html += '<div class="card"><h3 style="margin:0 0 4px;font-size:17px">Revisá tus respuestas</h3><dl class="rev">';
+        cfg.questions.forEach(function(q){
+          html += '<dt>'+esc(q.label)+'</dt><dd>'+esc(state.a[q.id]||"")+'</dd>';
+        });
+        html += '<dt>Teléfono</dt><dd>+54 9 11 ••••-••••</dd></dl>' +
+                '<div class="small">Al enviar, aceptás la política de privacidad de GCH.</div>'+whyBox(cfg.reviewWhy)+'</div>';
+        body.innerHTML = html;
+        setBtn(cfg.sendLabel, true);
+      } else if(state.step === 2 && cfg.verify){
+        html += '<div class="card q"><h3 style="margin:0 0 6px;font-size:17px">Verificá tu teléfono</h3>' +
+                '<p style="margin:0 0 10px;font-size:14px">Te enviamos un código por SMS al +54 9 11 ••••-••••.</p>' +
+                '<input id="code" inputmode="numeric" maxlength="6" placeholder="Código de 4 a 6 dígitos">' +
+                whyBox(cfg.verifyWhy)+'</div>';
+        body.innerHTML = html;
+        setBtn("Verificar y enviar", false);
+        var code = body.querySelector("#code");
+        code.addEventListener("input", function(){
+          code.value = code.value.replace(/\D/g,"");
+          btn.disabled = code.value.length < 4;
+        });
+      } else {
+        html += '<div class="card center"><div class="tick">&#10003;</div>' +
+                '<h3 style="margin:0 0 6px;font-size:18px">Gracias por tu interés</h3>' +
+                '<p style="margin:0;font-size:14px">'+esc(cfg.thanksText)+'</p>'+
+                whyBox(cfg.thanksWhy)+'</div>';
+        body.innerHTML = html;
+        setBtn("Continuar por WhatsApp", true, "wa");
+      }
+      body.scrollTop = 0;
+    }
+
+    function onAnswer(e){
+      var id = e.target.getAttribute("data-id");
+      if(!id) return;
+      state.a[id] = e.target.value;
+      btn.disabled = !allAnswered();
+    }
+    body.addEventListener("input", onAnswer);
+    body.addEventListener("change", onAnswer);
+    btn.addEventListener("click", function(){
+      if(btn.disabled) return;
+      var last = cfg.verify ? 3 : 2;
+      if(state.step < last){ state.step += 1; render(); }
+    });
+    function reset(){ state = {step:0, a:{}}; render(); }
+    root.querySelector(".ph-x").addEventListener("click", reset);
+    root.querySelector(".reset").addEventListener("click", reset);
+    render();
+  }
+
+  mount(document.getElementById("colA"), FORMS.A);
+  mount(document.getElementById("colB"), FORMS.B);
+
+  document.getElementById("whyToggle").addEventListener("change", function(e){
+    document.body.classList.toggle("show-why", e.target.checked);
+  });
+})();
+</script>
+</body>
+</html>
