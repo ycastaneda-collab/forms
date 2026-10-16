@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Formulario Partners, actual y dos versiones</title>
+<style>
+  :root{
+    --bg:#f4f5f7; --ink:#1c1e21; --muted:#5c6470; --line:#d9dce1; --mark:#fff3b0; --markink:#4a3b00;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){ --bg:#15171a; --ink:#e8eaed; --muted:#a0a7b1; --line:#343940; --mark:#5a4a00; --markink:#ffe9a0; }
+  }
+  :root[data-theme="dark"]{ --bg:#15171a; --ink:#e8eaed; --muted:#a0a7b1; --line:#343940; --mark:#5a4a00; --markink:#ffe9a0; }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+  .wrap{max-width:1180px;margin:0 auto;padding:24px 16px 48px}
+  h1{font-size:22px;margin:0 0 6px}
+  .lead{color:var(--muted);margin:0 0 14px;max-width:70ch}
+  .tools{display:flex;gap:16px;align-items:center;flex-wrap:wrap;margin-bottom:22px}
+  .tools label{display:flex;gap:8px;align-items:center;cursor:pointer}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:28px;align-items:start}
+  .col h2{font-size:17px;margin:0 0 2px}
+  .col .sub{color:var(--muted);font-size:13.5px;margin:0 0 4px}
+  .col .cc{color:var(--muted);font-size:12.5px;margin:0 0 12px}
+  mark{background:var(--mark);color:var(--markink);border-radius:3px;padding:0 3px}
+
+  /* teléfono (estilo formulario de lead, genérico) */
+  .phone{width:100%;max-width:360px;height:740px;background:#f3f2ef;border:1px solid var(--line);border-radius:22px;overflow:hidden;display:flex;flex-direction:column;color:#191919;margin:0 auto 0 0}
+  .ph-body{flex:1;overflow-y:auto;padding:12px 12px 16px}
+  .ph-foot{background:#fff;padding:10px 14px;border-top:1px solid #e0dfdc;flex:none}
+  .btn{width:100%;padding:11px;border:0;border-radius:24px;font-weight:600;font-size:15px;background:#0a66c2;color:#fff;cursor:pointer}
+  .btn[disabled]{background:#e0dfdc;color:#8a8a8a;cursor:not-allowed}
+  .card{background:#fff;border-radius:8px;padding:14px;margin-bottom:10px}
+  .head h3{margin:6px 0 8px;font-size:18px;line-height:1.3}
+  .head p{margin:0;font-size:14px;line-height:1.5}
+  .privacy{font-size:12px;color:#666;padding:2px 4px 10px}
+  .privacy b{color:#0a66c2}
+  .f{margin-bottom:12px}
+  .f:last-child{margin-bottom:0}
+  .f label{display:block;font-size:13.5px;color:#555;margin-bottom:5px}
+  .f select,.f input,.f textarea{width:100%;padding:9px 10px;border:1px solid #666;border-radius:4px;font:inherit;font-size:14px;background:#fff;color:#191919}
+  .f textarea{resize:none;height:64px}
+  .f input[readonly]{border-color:#c9c8c5;background:#fafaf9}
+  .ro .val{font-size:14px;margin-bottom:10px}
+  .ro .val small{display:block;color:#666;font-size:12.5px}
+  .why{display:none;margin-top:7px;padding:6px 9px;border-left:3px solid #0a66c2;background:#eaf2fb;color:#1f3b57;font-size:12.5px;border-radius:0 6px 6px 0}
+  .why.obs{border-left-color:#b45309;background:#fdf1e3;color:#6b3a07}
+  body.show-why .why{display:block}
+  .center{text-align:center}
+  .tick{width:52px;height:52px;border-radius:50%;background:#e3f6ea;color:#1fa855;display:grid;place-items:center;font-size:26px;margin:14px auto 10px}
+  .reset{margin-top:10px;background:none;border:1px solid var(--line);color:var(--ink);padding:6px 12px;border-radius:8px;cursor:pointer;font:inherit;font-size:13px}
+  .note{color:var(--muted);font-size:12.5px;margin-top:8px;max-width:360px}
+  .foot{margin-top:28px;color:var(--muted);font-size:13px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Formulario Partners: actual y dos versiones</h1>
+  <p class="lead">Maqueta interactiva. Completa cada formulario para ver la pantalla final. Los valores <mark>[entre corchetes]</mark> los define el equipo comercial. No es el formulario real de LinkedIn.</p>
+  <div class="tools">
+    <label><input type="checkbox" id="whyToggle"> Mostrar observaciones y justificación</label>
+    <span style="color:var(--muted);font-size:13px">Las versiones A y B comparten título y descripción.</span>
+  </div>
+  <div class="grid">
+    <section class="col" id="colC"></section>
+    <section class="col" id="colA"></section>
+    <section class="col" id="colB"></section>
+  </div>
+  <p class="foot">Pruébalas como pruebas A/B separadas del cambio de mensaje, para poder atribuir los resultados. Métricas sugeridas: % de leads perdidos por "busca trabajo", llamadas agendadas y partners activados con un primer cliente.</p>
+</div>
+
+<script>
+(function(){
+  var esc = function(s){ return String(s).replace(/[&<>"]/g, function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]; }); };
+  var fmt = function(s){ return esc(s).replace(/\[([^\]]+)\]/g, "<mark>[$1]</mark>"); };
+
+  var THANKS = "Gracias por tu interés en el Programa de Partners Dividenz. Un miembro de nuestro equipo te contactará en 1 o 2 días hábiles para presentarte la propuesta y conversar cómo trabajar juntos, siempre con total independencia en tu negocio.";
+
+  var Q1 = {id:"act",label:"¿Cuál describe mejor tu actividad actual?",options:["Asesor financiero independiente","Asesor en una firma, banco o family office","Corredor o broker inmobiliario","Otro profesional con cartera de clientes"],
+    why:"Confirma el perfil buscado. Quien busca empleo no tiene una respuesta natural."};
+  var Q2 = {id:"cart",label:"¿Cuántos clientes inversores tienes actualmente?",options:["Aún no tengo cartera propia","Menos de 20","Entre 20 y 100","Más de 100"],
+    why:"\"Aún no tengo cartera propia\" deja que quien no encaja se identifique sin gastar una llamada. Los cortes los define comercial."};
+  var Q3 = {id:"monto",label:"¿Cuál es el monto promedio que invierte cada cliente?",options:["Menos de USD [mínimo del producto]","Entre USD [mínimo] y [A]","Más de USD [A]"],
+    why:"Es la mejor señal de potencial real: conecta con el ticket mínimo del producto."};
+  var Q4 = {id:"exp",label:"¿Ya ofreces inversiones en el exterior a tus clientes?",options:["Sí, de forma habitual","Sí, ocasionalmente","No, pero me gustaría incorporarlas"],
+    why:"Separa a quien ya vende producto internacional de quien solo explora."};
+  var Q5 = {id:"abierta",label:"¿Cómo incorporarías este producto a tu oferta actual?",type:"text",placeholder:"Respuesta corta",
+    why:"El mejor filtro contra quien busca empleo y le da al equipo un punto de partida para la primera llamada. Cuesta completados porque exige escribir."};
+
+  var FORMS = {
+    C: {
+      key:"C",
+      title:"Actual",
+      sub:"Tal como aparece hoy en la captura.",
+      headline:"Súmate a nuestra exclusiva red de partners en Latinoamérica",
+      desc:"Con nuestro programa de Partners, puedes ofrecerle a tus clientes productos de inversión de calidad institucional en activos inmobiliarios en EE.UU.",
+      headWhy:"Observación: \"Súmate a nuestra exclusiva red\" suena a reclutamiento, y la descripción no menciona comisión, independencia ni que no es un empleo, justo lo que el mensaje previo ya aclara.",
+      privacy:"Enviaremos esta información a Dividenz, conforme a su política de privacidad",
+      contact:[{label:"Email*",value:"ana.lopez@ejemplo.com"},{label:"Teléfono del trabajo*",value:"555 555 555"}],
+      contactWhy:null,
+      extra:null,
+      questions:[
+        {id:"c1",label:"¿Cuántos clientes tienes en tu cartera?*",options:["[Opciones actuales no visibles en la captura]"],
+          why:"Observación: pregunta útil, pero no veo las opciones. Conviene que incluya un tramo \"sin cartera propia\"."},
+        {id:"c2",label:"¿Cómo te enteraste del programa de Partners?*",options:["[Opciones actuales no visibles en la captura]"],
+          why:"Observación: no califica. LinkedIn ya informa de qué campaña viene cada lead."}
+      ],
+      names:true,
+      thanksTitle:"Gracias",
+      thanksText:"[Texto actual no visible en la captura]",
+      thanksWhy:"Observación: no vi la pantalla final actual. Es un buen lugar para reforzar el frame comercial.",
+      thanksBtn:null
+    },
+    A: {
+      key:"A",
+      title:"Versión A: calificación equilibrada",
+      sub:"4 preguntas. Reemplaza \"cómo te enteraste\" por preguntas que califican.",
+      headline:"Te invitamos a conocer el Programa de Partners Dividenz",
+      desc:"Dividenz, plataforma líder en inversión inmobiliaria en EE. UU., te invita a ofrecer sus productos a tus clientes y recibir comisión, con total independencia.",
+      headWhy:"Tono cercano y profesional. Nombra a Dividenz como plataforma líder y transmite el frame comercial en positivo (tus clientes, comisión, independencia), sin negaciones. Se evita \"Súmate\".",
+      privacy:"Enviaremos esta información a Dividenz, conforme a su política de privacidad",
+      contact:[{label:"Email*",value:"ana.lopez@ejemplo.com"},{label:"Teléfono del trabajo*",value:"555 555 555"}],
+      contactWhy:null,
+      extra:[{label:"Empresa",value:"Estudio López"},{label:"Cargo",value:"Asesora financiera"},{label:"País",value:"Argentina"},{label:"Perfil de LinkedIn",value:"linkedin.com/in/ana-lopez"}],
+      extraWhy:"Campos que LinkedIn puede precargar del perfil. Sin fricción para el usuario y primera validación para comercial. El perfil de LinkedIn permite revisar al lead antes de llamar y cruzarlo con Sales Navigator.",
+      questions:[Q1,Q2,Q3,Q4],
+      names:true,
+      thanksTitle:"Gracias",
+      thanksText:THANKS,
+      thanksWhy:"Cierra con calidez, fija un plazo de contacto y mantiene la idea de independencia sin sonar a aviso legal.",
+      thanksBtn:"Conocer el programa"
+    },
+    B: {
+      key:"B",
+      title:"Versión B: filtro alto",
+      sub:"4 preguntas más una abierta. Menos volumen, leads con más contexto.",
+      headline:"Te invitamos a conocer el Programa de Partners Dividenz",
+      desc:"Dividenz, plataforma líder en inversión inmobiliaria en EE. UU., te invita a ofrecer sus productos a tus clientes y recibir comisión, con total independencia.",
+      headWhy:"Mismo título y descripción que la Versión A, para que la prueba aísle el efecto de las preguntas.",
+      privacy:"Enviaremos esta información a Dividenz, conforme a su política de privacidad",
+      contact:[{label:"Email*",value:"ana.lopez@ejemplo.com"},{label:"Teléfono del trabajo*",value:"555 555 555"}],
+      contactWhy:null,
+      extra:[{label:"Empresa",value:"Estudio López"},{label:"Cargo",value:"Asesora financiera"},{label:"País",value:"Argentina"},{label:"Perfil de LinkedIn",value:"linkedin.com/in/ana-lopez"}],
+      extraWhy:"Campos que LinkedIn puede precargar del perfil, incluido el enlace al perfil público.",
+      questions:[Q1,Q2,Q3,Q4,Q5],
+      names:true,
+      thanksTitle:"Gracias",
+      thanksText:THANKS,
+      thanksWhy:"Cierra con calidez, fija un plazo de contacto y mantiene la idea de independencia sin sonar a aviso legal.",
+      thanksBtn:"Conocer el programa"
+    }
+  };
+
+  function mount(root, cfg){
+    var state = {step:0, a:{}};
+    var isActual = cfg.key === "C";
+    root.innerHTML =
+      '<h2>'+esc(cfg.title)+'</h2><p class="sub">'+esc(cfg.sub)+'</p>' +
+      '<p class="cc">Título '+cfg.headline.length+'/60 · Descripción '+cfg.desc.length+'/160</p>' +
+      '<div class="phone"><div class="ph-body"></div><div class="ph-foot"><button class="btn"></button></div></div>' +
+      '<button class="reset">Reiniciar</button>';
+    var body = root.querySelector(".ph-body");
+    var btn = root.querySelector(".btn");
+    var why = function(t,obs){ return t ? '<div class="why'+(obs?' obs':'')+'">'+fmt(t)+'</div>' : ''; };
+    var isObs = function(t){ return t && t.indexOf("Observación") === 0; };
+
+    function allAnswered(){
+      return cfg.questions.every(function(q){
+        var v = state.a[q.id];
+        return v && String(v).trim().length > 0;
+      });
+    }
+    function render(){
+      var html = "";
+      if(state.step === 0){
+        html += '<div class="card head"><h3>'+esc(cfg.headline)+'</h3><p>'+esc(cfg.desc)+'</p>'+why(cfg.headWhy, isObs(cfg.headWhy))+'</div>';
+        html += '<div class="privacy">'+esc(cfg.privacy).replace("política de privacidad","<b>política de privacidad</b>")+'</div>';
+        html += '<div class="card">';
+        cfg.contact.forEach(function(c){
+          html += '<div class="f"><label>'+esc(c.label)+'</label><input value="'+esc(c.value)+'"></div>';
+        });
+        cfg.questions.forEach(function(q){
+          html += '<div class="f"><label for="'+cfg.key+q.id+'">'+esc(q.label)+'</label>';
+          if(q.type === "text"){
+            html += '<textarea id="'+cfg.key+q.id+'" data-id="'+q.id+'" maxlength="140" placeholder="'+esc(q.placeholder||"")+'">'+esc(state.a[q.id]||"")+'</textarea>';
+          } else {
+            html += '<select id="'+cfg.key+q.id+'" data-id="'+q.id+'"><option value=""></option>';
+            q.options.forEach(function(o){
+              html += '<option value="'+esc(o)+'"'+(state.a[q.id]===o?' selected':'')+'>'+esc(o)+'</option>';
+            });
+            html += '</select>';
+          }
+          html += why(q.why, isObs(q.why))+'</div>';
+        });
+        html += '</div>';
+        if(cfg.extra){
+          html += '<div class="card ro">';
+          cfg.extra.forEach(function(c){ html += '<div class="val"><small>'+esc(c.label)+'</small>'+esc(c.value)+'</div>'; });
+          html += why(cfg.extraWhy,false)+'</div>';
+        }
+        html += '<div class="card ro"><div class="val"><small>Nombre</small>Ana</div><div class="val"><small>Apellidos</small>López</div></div>';
+        body.innerHTML = html;
+        btn.textContent = "Enviar";
+        btn.disabled = !allAnswered();
+      } else {
+        html += '<div class="card center"><div class="tick">&#10003;</div><h3 style="margin:0 0 6px;font-size:18px">'+esc(cfg.thanksTitle)+'</h3>' +
+                '<p style="margin:0;font-size:14px">'+fmt(cfg.thanksText)+'</p>'+why(cfg.thanksWhy, isObs(cfg.thanksWhy))+'</div>';
+        body.innerHTML = html;
+        btn.textContent = cfg.thanksBtn || "Listo";
+        btn.disabled = false;
+      }
+      body.scrollTop = 0;
+    }
+    function onAnswer(e){
+      var id = e.target.getAttribute("data-id");
+      if(!id) return;
+      state.a[id] = e.target.value;
+      btn.disabled = !allAnswered();
+    }
+    body.addEventListener("input", onAnswer);
+    body.addEventListener("change", onAnswer);
+    btn.addEventListener("click", function(){
+      if(btn.disabled) return;
+      if(state.step === 0){ state.step = 1; render(); }
+    });
+    root.querySelector(".reset").addEventListener("click", function(){ state = {step:0, a:{}}; render(); });
+    render();
+  }
+
+  mount(document.getElementById("colC"), FORMS.C);
+  mount(document.getElementById("colA"), FORMS.A);
+  mount(document.getElementById("colB"), FORMS.B);
+
+  document.getElementById("whyToggle").addEventListener("change", function(e){
+    document.body.classList.toggle("show-why", e.target.checked);
+  });
+})();
+</script>
+</body>
+</html>
